@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
+ * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<resources>
+
+    <string name="app_name">Wake Up</string>
+
+    <string name="wake_gestures_unsupported">Your device either does not support kernel level wake gestures 
+        or they are currently disabled</string>
+
+    <string name="pref_cat_gestures_title">Wake gesture actions</string>
+
+    <!-- About -->
+    <string name="pref_cat_about_title">About</string>
+    <string name="pref_about_summary">Fork based on initial C3C076@XDA works.</string>
+
+    <!-- AppPickerPreference -->
+    <string name="app_picker_none">(None)</string>
+    <string name="app_picker_search">Search</string>
+    <string name="app_picker_applications">Applications</string>
+    <string name="app_picker_shortcuts">Shortcuts</string>
+    <string name="app_picker_actions">Actions</string>
+    <string name="app_picker_shortcut_null_intent">Unable to create launchable shortcut because activity did not return shortcut intent</string>
+    <string name="app_picker_shortcut_cancelled">Shortcut creation cancelled by target app</string>
+
+    <!-- Wake gestures -->
+    <string name="pref_wg_sweep_right_title">Sweep right</string>
+    <string name="pref_wg_sweep_left_title">Sweep left</string>
+    <string name="pref_wg_sweep_up_title">Sweep up</string>
+    <string name="pref_wg_sweep_down_title">Sweep down</string>
+    <string name="pref_wg_doubletap_title">Double tap</string>
+
+    <!-- Actions -->
+    <string name="action_unlock">Unlock</string>
+    <string name="action_toggle_torch">Toggle torch</string>
+    <string name="torch_on">Torch On</string>
+    <string name="torch_off_notif">Touch to turn off</string>
+
+    <!-- Media control action -->
+    <string name="media_control_previous">Previous track</string>
+    <string name="media_control_next">Next track</string>
+
+    <!-- Screen on action -->
+    <string name="action_screen_on">Turn screen on</string>
+
+    <!-- Other category -->
+    <string name="pref_cat_other_title">Settings</string>
+
+    <!-- Pocket mode -->
+    <string name="pref_pocket_mode_title">Pocket mode</string>
+    <string name="pref_pocket_mode_summary">Won\'t trigger action when proximity sensor is covered, e.g. when device is in the pocket</string>
+
+    <!-- start on boot -->
+    <string name="pref_start_onboot">Start on boot</string>
+    <string name="pref_start_onboot_summary">Start Wake gestures on boot</string>
+
+</resources>

@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
  * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Copyright (C) 2015 Alex Zhang (ztc1997@xda)
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,6 +21,7 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -49,11 +51,13 @@ public class WakeGestureHandler implements IWakeGestureListener {
     private WakeLock mWakeLock;
     private SensorManager mSensorManager;
     private Sensor mProxSensor;
+    private KeyguardManager.KeyguardLock mKeyguardLock;
 
     public WakeGestureHandler(Context context) {
         mContext = context;
         mPrefs = PreferenceManager.getDefaultSharedPreferences(mContext);
         mPm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+        mKeyguardLock = ((KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE)).newKeyguardLock("");
 
         initWakeGestures();
         initWakeGestureProcessor();
@@ -183,6 +187,15 @@ public class WakeGestureHandler implements IWakeGestureListener {
             if (isMusicActive()) {
                 sendMediaButtonEvent(intent.getIntExtra(AppPickerPreference.EXTRA_MC_KEYCODE, 0));
             }
+        } else if (action.equals(AppPickerPreference.ACTION_DISMISS_KEYGUARD)) {
+            mKeyguardLock.disableKeyguard();
+            mContext.registerReceiver(new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    mKeyguardLock.reenableKeyguard();
+                    mContext.unregisterReceiver(this);
+                }
+            }, new IntentFilter(Intent.ACTION_SCREEN_OFF));
         } else if (action.equals(AppPickerPreference.ACTION_SCREEN_ON)) {
             // do nothing as wake lock already did it for us
         }

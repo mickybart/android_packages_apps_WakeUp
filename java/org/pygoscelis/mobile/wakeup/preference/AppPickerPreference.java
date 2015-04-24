@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
  * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Copyright (C) 2015 Alex Zhang (ztc1997@xda)
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -331,7 +332,7 @@ public class AppPickerPreference extends DialogPreference
 
                 if (mMode == MODE_ACTION) {
                     itemList.add(new AppItem(mContext.getString(R.string.app_picker_none), null));
-                    //itemList.add(new UnlockAction());
+                    itemList.add(new UnlockAction());
                     itemList.add(new TorchAction());
                     itemList.add(new MediaAction(R.string.media_control_previous,
                             R.drawable.ic_action_av_previous, KeyEvent.KEYCODE_MEDIA_PREVIOUS));

@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
  * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -49,23 +49,4 @@ public class Utils {
         return bitmap;
     }
 
-    public static int readFileSingleLineAsInt(File f) throws IOException, NumberFormatException {
-        return Integer.valueOf(readFileSingleLine(f));
-    }
-
-    public static String readFileSingleLine(File f) throws IOException {
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader(f));
-            String line = reader.readLine();
-            reader.close();
-            return line;
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e1) { }
-            }
-        }
-    }
 }

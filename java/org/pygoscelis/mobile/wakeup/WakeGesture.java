@@ -15,8 +15,6 @@
 
 package org.pygoscelis.mobile.wakeup;
 
-import java.io.File;
-
 /**
  * Enum representing all available wake gestures
  */
@@ -33,6 +31,7 @@ public enum WakeGesture {
     private static final String CONFIG_PATH_WG = "/sys/android_touch/wake_gestures";
     private static final String CONFIG_PATH_SWEEP = "/sys/android_touch/sweep2wake";
     private static final String CONFIG_PATH_DT = "/sys/android_touch/doubletap2wake";
+    private static final String CONFIG_PATH_PROXIMITY = "/sys/android_touch/proximity";
 
     WakeGesture(int bitValue) {
         mBitValue = bitValue;
@@ -52,31 +51,61 @@ public enum WakeGesture {
     public boolean isEnabled() {
         if (mBitValue == 0) return false;
 
-        try {
-            File f = new File(mBitValue == 16 ? CONFIG_PATH_DT : CONFIG_PATH_SWEEP);
-            if (!f.exists()) return false;
-            int value = Utils.readFileSingleLineAsInt(f);
-            return (mBitValue == 16 ? value != 0 :
-                    (value & mBitValue) == mBitValue);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+        Integer value = FileUtils.readOneLineAsInt(mBitValue == 16 ? CONFIG_PATH_DT : CONFIG_PATH_SWEEP);
+
+        return ((value != null) && (mBitValue == 16 ? value != 0 :
+                (value & mBitValue) == mBitValue));
     }
 
     /**
      * Checks if device supports wake gestures
      * @return true if device supports wake gestures
      */
-    public static boolean supportsWakeGestures() {
-        try {
-            File f = new File(CONFIG_PATH_WG);
-            if (!f.exists()) return false;
-            int value = Utils.readFileSingleLineAsInt(f);
-            return (value == 1);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public static boolean isWakeGesture() {
+        Integer value = FileUtils.readOneLineAsInt(CONFIG_PATH_WG);
+
+        return ((value != null) && (value.intValue() == 1));
+    }
+
+    public static boolean isProximity() {
+        Integer value = FileUtils.readOneLineAsInt(CONFIG_PATH_PROXIMITY);
+
+        return ((value != null) && (value.intValue() == 1));
+    }
+
+    public static boolean supportGestures() {
+        return WakeGesture.supportDoubleTap() || WakeGesture.supportSweep();
+    }
+
+    public static boolean supportWakeGesture() {
+        return FileUtils.isFileExist(CONFIG_PATH_WG);
+    }
+
+    public static boolean supportDoubleTap() {
+        return FileUtils.isFileExist(CONFIG_PATH_DT);
+    }
+
+    public static boolean supportSweep() {
+        return FileUtils.isFileExist(CONFIG_PATH_SWEEP);
+    }
+
+    public static boolean supportProximity() {
+        return FileUtils.isFileExist(CONFIG_PATH_PROXIMITY);
+    }
+
+    public static boolean writeWakeGestures(int value) {
+        return FileUtils.writeLine(CONFIG_PATH_WG, Integer.toString(value));
+    }
+
+    public static boolean writeDoubleTape(int value) {
+        return FileUtils.writeLine(CONFIG_PATH_DT, Integer.toString(value));
+    }
+
+    public static boolean writeSweep(int value) {
+        return FileUtils.writeLine(CONFIG_PATH_SWEEP, Integer.toString(value));
+    }
+
+    public static boolean writeProximity(int value) {
+        return FileUtils.writeLine(CONFIG_PATH_PROXIMITY, Integer.toString(value));
     }
 };

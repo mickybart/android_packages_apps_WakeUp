@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -82,7 +83,7 @@ public class WakeGestureProcessor {
      * @throws IllegalStateException in case processing could not be started because it is already running
      */
     public synchronized void startProcessing() {
-        if (!WakeGesture.supportsWakeGestures())
+        if (!WakeGesture.isWakeGesture())
             throw new UnsupportedOperationException("Device does not support wake gestures");
 
         if (!mInputEventThread.isAlive()) {
@@ -210,13 +211,9 @@ public class WakeGestureProcessor {
                         eventName = inputFile.getName();
                     }
                     if (inputFile.getName().equals("name")) {
-                        try {
-                            String line = Utils.readFileSingleLine(inputFile);
-                            if (CONFIG_WG_DEVICE_NAME.equals(line)) {
-                                isWakeGesture = true;
-                            }
-                        } catch (Exception e) {
-                            Log.e(TAG, "Error reading device name: " + e.getMessage());
+                        String line = FileUtils.readOneLine(inputFile.getAbsolutePath());
+                        if (line != null && CONFIG_WG_DEVICE_NAME.equals(line)) {
+                            isWakeGesture = true;
                         }
                     }
                 }

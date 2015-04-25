@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
  * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -35,7 +35,9 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,15 +51,17 @@ public class WakeGestureSettings extends Activity {
     public static final String PREF_KEY_WG_SWEEP_UP = "pref_wg_sweep_up";
     public static final String PREF_KEY_WG_SWEEP_DOWN = "pref_wg_sweep_down";
     public static final String PREF_KEY_WG_DOUBLETAP = "pref_wg_doubletap";
-    public static final String PREF_KEY_POCKET_MODE = "pref_pocket_mode";
     public static final String PREF_KEY_START_ONBOOT = "pref_start_onboot";
+    public static final String PREF_KEY_DT2W = "pref_dt2w";
+    public static final String PREF_KEY_S2W = "pref_s2w";
+    public static final String PREF_KEY_WG = "pref_wg";
+    public static final String PREF_KEY_PROXIMITY = "pref_proximity";
 
     public static final String ACTION_WAKE_GESTURE_CHANGED = "wakegestures.intent.action.WAKE_GESTURE_CHANGED";
     public static final String EXTRA_WAKE_GESTURE = "wakeGesture";
     public static final String EXTRA_INTENT_URI = "intentUri";
 
     public static final String ACTION_SETTINGS_CHANGED = "wakegestures.intent.action.SETTINGS_CHANGED";
-    public static final String EXTRA_POCKET_MODE = "pocketMode";
 
     private static final int REQ_OBTAIN_SHORTCUT = 1028;
 
@@ -95,7 +99,7 @@ public class WakeGestureSettings extends Activity {
         public void onResume() {
             super.onResume();
 
-            if (!WakeGesture.supportsWakeGestures()) {
+            if (!WakeGesture.supportGestures()) {
                 mInfoTextView.setText(R.string.wake_gestures_unsupported);
                 mInfoTextView.setVisibility(View.VISIBLE);
             } else {
@@ -108,10 +112,22 @@ public class WakeGestureSettings extends Activity {
         }
     }
 
-    public static class SettingsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener {
+    public static class SettingsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener,
+            Preference.OnPreferenceChangeListener {
         private SharedPreferences mPrefs;
         private PreferenceCategory mPrefCatGestures;
         private Preference mPrefAbout;
+
+        private Preference mPrefDoubleTap;
+        private Preference mPrefSweepRight;
+        private Preference mPrefSweepLeft;
+        private Preference mPrefSweepUp;
+        private Preference mPrefSweepDown;
+        private SwitchPreference mPrefKernelDt2w;
+        private SwitchPreference mPrefKernelS2w;
+        private SwitchPreference mPrefKernelWg;
+        private SwitchPreference mPrefKernelProximity;
+        private SwitchPreference mPrefStartOnBoot;
 
         @SuppressWarnings("deprecation")
         @Override
@@ -136,10 +152,99 @@ public class WakeGestureSettings extends Activity {
             } finally {
                 mPrefAbout.setTitle(getActivity().getTitle() + version);
             }
+
+            mPrefDoubleTap = findPreference(PREF_KEY_WG_DOUBLETAP);
+            mPrefSweepRight = findPreference(PREF_KEY_WG_SWEEP_RIGHT);
+            mPrefSweepLeft = findPreference(PREF_KEY_WG_SWEEP_LEFT);
+            mPrefSweepUp = findPreference(PREF_KEY_WG_SWEEP_UP);
+            mPrefSweepDown = findPreference(PREF_KEY_WG_SWEEP_DOWN);
+            mPrefKernelDt2w = (SwitchPreference) findPreference(PREF_KEY_DT2W);
+            mPrefKernelS2w = (SwitchPreference) findPreference(PREF_KEY_S2W);
+            mPrefKernelWg = (SwitchPreference) findPreference(PREF_KEY_WG);
+            mPrefKernelProximity = (SwitchPreference) findPreference(PREF_KEY_PROXIMITY);
+            mPrefStartOnBoot = (SwitchPreference) findPreference(PREF_KEY_START_ONBOOT);
+
+            mPrefKernelDt2w.setOnPreferenceChangeListener(this);
+            mPrefKernelS2w.setOnPreferenceChangeListener(this);
+            mPrefKernelWg.setOnPreferenceChangeListener(this);
+            mPrefKernelProximity.setOnPreferenceChangeListener(this);
+        }
+
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            boolean value = ((Boolean)newValue).booleanValue();
+            boolean rc = false;
+
+            if (preference == mPrefKernelDt2w) {
+                rc = writeKernelDt2w(value);
+            } else if (preference == mPrefKernelS2w) {
+                rc = writeKernelS2w(value);
+            } else if (preference == mPrefKernelWg) {
+                rc = writeKernelWg(value);
+                if (value) {
+                    getActivity().startService(new Intent(getActivity().getApplicationContext(),WakeGestureService.class));
+                } else {
+                    getActivity().stopService(new Intent(getActivity().getApplicationContext(),WakeGestureService.class));
+                }
+            } else if (preference == mPrefKernelProximity) {
+                rc = writeKernelProximity(value);
+            }
+
+            if (rc) {
+                updateAllOptions();
+            }
+
+            return rc;
+        }
+
+        private static boolean writeKernelDt2w(boolean value) {
+            return WakeGesture.writeDoubleTape(value ? 1 : 0);
+        }
+
+        private static boolean writeKernelS2w(boolean value) {
+            return WakeGesture.writeSweep(value ? 15 : 0);
+        }
+
+        private static boolean writeKernelWg(boolean value) {
+            return WakeGesture.writeWakeGestures(value ? 1 : 0);
+        }
+
+        private static boolean writeKernelProximity(boolean value) {
+            return WakeGesture.writeProximity(value ? 1 : 0);
+        }
+
+        public static void initKernelParameters(Context context) {
+            SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+            if (WakeGesture.supportDoubleTap())
+                writeKernelDt2w(mPrefs.getBoolean(PREF_KEY_DT2W, false));
+
+            if (WakeGesture.supportSweep())
+                writeKernelS2w(mPrefs.getBoolean(PREF_KEY_S2W, false));
+
+            if (WakeGesture.supportProximity())
+                writeKernelProximity(mPrefs.getBoolean(PREF_KEY_PROXIMITY, false));
+
+            if (WakeGesture.supportWakeGesture())
+                writeKernelWg(mPrefs.getBoolean(PREF_KEY_WG, false));
         }
 
         protected void setGesturePrefsEnabled(boolean enabled) {
             mPrefCatGestures.setEnabled(enabled);
+        }
+
+        private void updateAllOptions() {
+            boolean wake_gesture_state = WakeGesture.isWakeGesture();
+
+            mPrefDoubleTap.setEnabled(wake_gesture_state && WakeGesture.DOUBLETAP.isEnabled());
+            mPrefSweepRight.setEnabled(wake_gesture_state && WakeGesture.SWEEP_RIGHT.isEnabled());
+            mPrefSweepLeft.setEnabled(wake_gesture_state && WakeGesture.SWEEP_LEFT.isEnabled());
+            mPrefSweepUp.setEnabled(wake_gesture_state && WakeGesture.SWEEP_UP.isEnabled());
+            mPrefSweepDown.setEnabled(wake_gesture_state &&WakeGesture.SWEEP_DOWN.isEnabled());
+            mPrefKernelDt2w.setEnabled(WakeGesture.supportDoubleTap());
+            mPrefKernelS2w.setEnabled(WakeGesture.supportSweep());
+            mPrefKernelWg.setEnabled(WakeGesture.supportWakeGesture());
+            mPrefKernelProximity.setEnabled(WakeGesture.supportProximity());
         }
 
         @Override
@@ -147,16 +252,7 @@ public class WakeGestureSettings extends Activity {
             super.onResume();
             mPrefs.registerOnSharedPreferenceChangeListener(this);
 
-            
-            findPreference(PREF_KEY_WG_SWEEP_RIGHT).setEnabled(WakeGesture.SWEEP_RIGHT.isEnabled());
-
-            findPreference(PREF_KEY_WG_SWEEP_LEFT).setEnabled(WakeGesture.SWEEP_LEFT.isEnabled());
-
-            findPreference(PREF_KEY_WG_SWEEP_UP).setEnabled(WakeGesture.SWEEP_UP.isEnabled());
-
-            findPreference(PREF_KEY_WG_SWEEP_DOWN).setEnabled(WakeGesture.SWEEP_DOWN.isEnabled());
-
-            findPreference(PREF_KEY_WG_DOUBLETAP).setEnabled(WakeGesture.DOUBLETAP.isEnabled());
+            updateAllOptions();
         }
 
         @Override
@@ -199,10 +295,10 @@ public class WakeGestureSettings extends Activity {
                 intent.putExtra(EXTRA_WAKE_GESTURE, "SWEEP_DOWN");
             } else if (key.equals(PREF_KEY_WG_DOUBLETAP)) {
                 intent.putExtra(EXTRA_WAKE_GESTURE, "DOUBLETAP");
-            } else if (key.equals(PREF_KEY_POCKET_MODE)) {
+            } /*else if (key.equals(PREF_KEY_DT2W)) {
                 intent.setAction(ACTION_SETTINGS_CHANGED);
-                intent.putExtra(EXTRA_POCKET_MODE, prefs.getBoolean(key, false));
-            }
+                intent.putExtra("EXTRA_DT2W", prefs.getBoolean(key, false));
+            } */
 
             if (intent.hasExtra(EXTRA_WAKE_GESTURE) ||
                     ACTION_SETTINGS_CHANGED.equals(intent.getAction())) {

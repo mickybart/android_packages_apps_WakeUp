@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
  * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -25,10 +25,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
@@ -47,8 +43,6 @@ public class WakeGestureHandler implements IWakeGestureListener {
     private Map<WakeGesture, Intent> mWakeGestures;
     private PowerManager mPm;
     private WakeLock mWakeLock;
-    private SensorManager mSensorManager;
-    private Sensor mProxSensor;
 
     public WakeGestureHandler(Context context) {
         mContext = context;
@@ -78,21 +72,9 @@ public class WakeGestureHandler implements IWakeGestureListener {
         mWakeGestures.put(WakeGesture.DOUBLETAP, intentFromUri(mPrefs.getString(
                 WakeGestureSettings.PREF_KEY_WG_DOUBLETAP, null)));
 
-        setPocketModeEnabled(mPrefs.getBoolean(WakeGestureSettings.PREF_KEY_POCKET_MODE, false));
-
         IntentFilter intentFilter = new IntentFilter(WakeGestureSettings.ACTION_WAKE_GESTURE_CHANGED);
         intentFilter.addAction(WakeGestureSettings.ACTION_SETTINGS_CHANGED);
         mContext.registerReceiver(mBroadcastReceiver, intentFilter);
-    }
-
-    private void setPocketModeEnabled(boolean enabled) {
-        if (enabled) {
-            mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
-            mProxSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
-        } else {
-            mProxSensor = null;
-            mSensorManager = null;
-        }
     }
 
     private Intent intentFromUri(String uri) {
@@ -109,38 +91,6 @@ public class WakeGestureHandler implements IWakeGestureListener {
 
     @Override
     public void onWakeGesture(final WakeGesture gesture) {
-
-        if (mSensorManager != null && mProxSensor != null) {
-            mSensorManager.registerListener(new SensorEventListener() {
-                @Override
-                public void onSensorChanged(SensorEvent event) {
-                    try {
-                        final boolean screenCovered = 
-                                event.values[0] < (mProxSensor.getMaximumRange() * 0.1f);
-                        Log.d(TAG, "mProxSensorEventListener: " + event.values[0] +
-                                "; screenCovered=" + screenCovered);
-                        if (!screenCovered) {
-                            processGesture(gesture);
-                        }
-                    } catch (Throwable t) {
-                        Log.d(TAG, t.getMessage());
-                    } finally {
-                        try { 
-                            mSensorManager.unregisterListener(this, mProxSensor); 
-                        } catch (Throwable t) {
-                            // should never happen
-                        }
-                    }
-                }
-                @Override
-                public void onAccuracyChanged(Sensor sensor, int accuracy) { }
-            }, mProxSensor, SensorManager.SENSOR_DELAY_FASTEST);
-        } else {
-            processGesture(gesture);
-        }
-    }
-
-    private void processGesture(WakeGesture gesture) {
         handleIntent(mWakeGestures.get(gesture));
     }
 
@@ -232,11 +182,11 @@ public class WakeGestureHandler implements IWakeGestureListener {
                 } catch (Exception e) { 
                     Log.d(TAG,"ACTION_WAKE_GESTURE_CHANGED error: " + e.getMessage());
                 }
-            } else if (action.equals(WakeGestureSettings.ACTION_SETTINGS_CHANGED)) {
+            }/* else if (action.equals(WakeGestureSettings.ACTION_SETTINGS_CHANGED)) {
                 if (intent.hasExtra(WakeGestureSettings.EXTRA_POCKET_MODE)) {
                     setPocketModeEnabled(intent.getBooleanExtra(WakeGestureSettings.EXTRA_POCKET_MODE, false));
                 }
-            }
+            }*/
         }
     };
 }

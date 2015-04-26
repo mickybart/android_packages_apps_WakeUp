@@ -81,6 +81,12 @@
             android:summary="@string/pref_proximity_summary"
             android:defaultValue="false" />
 
+        <org.pygoscelis.mobile.wakeup.preference.SeekBarPreference
+            android:key="pref_vib_strength"
+            android:icon="@drawable/ic_audio_ring_notif_vibrate"
+            android:title="@string/pref_vib_strength_title"
+            android:defaultValue="20" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

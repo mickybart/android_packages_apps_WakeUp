@@ -82,4 +82,7 @@
     <string name="pref_proximity_title">Proximity sensor</string>
     <string name="pref_proximity_summary">Permit to control touchscreen power state</string>
 
+    <!-- vib_strength -->
+    <string name="pref_vib_strength_title">Vibration strength</string>
+
 </resources>

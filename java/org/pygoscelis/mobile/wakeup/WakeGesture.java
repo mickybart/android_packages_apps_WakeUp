@@ -32,6 +32,7 @@ public enum WakeGesture {
     private static final String CONFIG_PATH_SWEEP = "/sys/android_touch/sweep2wake";
     private static final String CONFIG_PATH_DT = "/sys/android_touch/doubletap2wake";
     private static final String CONFIG_PATH_PROXIMITY = "/sys/android_touch/proximity";
+    private static final String CONFIG_PATH_VIB_STRENGTH = "/sys/android_touch/vib_strength";
 
     WakeGesture(int bitValue) {
         mBitValue = bitValue;
@@ -89,6 +90,10 @@ public enum WakeGesture {
         return FileUtils.isFileExist(CONFIG_PATH_SWEEP);
     }
 
+    public static boolean supportVibStrength() {
+        return FileUtils.isFileExist(CONFIG_PATH_VIB_STRENGTH);
+    }
+
     public static boolean supportProximity() {
         return FileUtils.isFileExist(CONFIG_PATH_PROXIMITY);
     }
@@ -107,5 +112,9 @@ public enum WakeGesture {
 
     public static boolean writeProximity(int value) {
         return FileUtils.writeLine(CONFIG_PATH_PROXIMITY, Integer.toString(value));
+    }
+
+    public static boolean writeVibStrength(int value) {
+        return FileUtils.writeLine(CONFIG_PATH_VIB_STRENGTH, Integer.toString(value));
     }
 };

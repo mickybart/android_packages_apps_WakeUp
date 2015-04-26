@@ -17,6 +17,7 @@
 package org.pygoscelis.mobile.wakeup;
 
 import org.pygoscelis.mobile.wakeup.preference.AppPickerPreference;
+import org.pygoscelis.mobile.wakeup.preference.SeekBarPreference;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -56,6 +57,7 @@ public class WakeGestureSettings extends Activity {
     public static final String PREF_KEY_S2W = "pref_s2w";
     public static final String PREF_KEY_WG = "pref_wg";
     public static final String PREF_KEY_PROXIMITY = "pref_proximity";
+    public static final String PREF_KEY_VIB_STRENGTH = "pref_vib_strength";
 
     public static final String ACTION_WAKE_GESTURE_CHANGED = "wakegestures.intent.action.WAKE_GESTURE_CHANGED";
     public static final String EXTRA_WAKE_GESTURE = "wakeGesture";
@@ -127,7 +129,7 @@ public class WakeGestureSettings extends Activity {
         private SwitchPreference mPrefKernelS2w;
         private SwitchPreference mPrefKernelWg;
         private SwitchPreference mPrefKernelProximity;
-        private SwitchPreference mPrefStartOnBoot;
+        private SeekBarPreference mPrefKernelVibStrength;
 
         @SuppressWarnings("deprecation")
         @Override
@@ -162,32 +164,39 @@ public class WakeGestureSettings extends Activity {
             mPrefKernelS2w = (SwitchPreference) findPreference(PREF_KEY_S2W);
             mPrefKernelWg = (SwitchPreference) findPreference(PREF_KEY_WG);
             mPrefKernelProximity = (SwitchPreference) findPreference(PREF_KEY_PROXIMITY);
-            mPrefStartOnBoot = (SwitchPreference) findPreference(PREF_KEY_START_ONBOOT);
+            mPrefKernelVibStrength = (SeekBarPreference) findPreference(PREF_KEY_VIB_STRENGTH);
 
             mPrefKernelDt2w.setOnPreferenceChangeListener(this);
             mPrefKernelS2w.setOnPreferenceChangeListener(this);
             mPrefKernelWg.setOnPreferenceChangeListener(this);
             mPrefKernelProximity.setOnPreferenceChangeListener(this);
+
+            mPrefKernelVibStrength.setMuteIcon(R.drawable.ic_audio_ring_notif_mute);
+            mPrefKernelVibStrength.showIcon(R.drawable.ic_audio_ring_notif_vibrate);
+            mPrefKernelVibStrength.setMax(90);
+            mPrefKernelVibStrength.setProgress(getPreferenceManager().getSharedPreferences().getInt(PREF_KEY_VIB_STRENGTH, 20));
+            mPrefKernelVibStrength.setOnPreferenceChangeListener(this);
         }
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
-            boolean value = ((Boolean)newValue).booleanValue();
             boolean rc = false;
 
             if (preference == mPrefKernelDt2w) {
-                rc = writeKernelDt2w(value);
+                rc = writeKernelDt2w(((Boolean)newValue).booleanValue());
             } else if (preference == mPrefKernelS2w) {
-                rc = writeKernelS2w(value);
+                rc = writeKernelS2w(((Boolean)newValue).booleanValue());
             } else if (preference == mPrefKernelWg) {
-                rc = writeKernelWg(value);
-                if (value) {
+                rc = writeKernelWg(((Boolean)newValue).booleanValue());
+                if (WakeGesture.isWakeGesture()) {
                     getActivity().startService(new Intent(getActivity().getApplicationContext(),WakeGestureService.class));
                 } else {
-                    getActivity().stopService(new Intent(getActivity().getApplicationContext(),WakeGestureService.class));
+                    getActivity().stopService(new Intent(getActivity().getApplicationContext(), WakeGestureService.class));
                 }
             } else if (preference == mPrefKernelProximity) {
-                rc = writeKernelProximity(value);
+                rc = writeKernelProximity(((Boolean)newValue).booleanValue());
+            } else if (preference == mPrefKernelVibStrength) {
+                rc = writeVibStrength(((Integer)newValue).intValue());
             }
 
             if (rc) {
@@ -213,6 +222,10 @@ public class WakeGestureSettings extends Activity {
             return WakeGesture.writeProximity(value ? 1 : 0);
         }
 
+        private static boolean writeVibStrength(int value) {
+            return WakeGesture.writeVibStrength(value);
+        }
+
         public static void initKernelParameters(Context context) {
             SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
@@ -227,6 +240,9 @@ public class WakeGestureSettings extends Activity {
 
             if (WakeGesture.supportWakeGesture())
                 writeKernelWg(mPrefs.getBoolean(PREF_KEY_WG, false));
+
+            if (WakeGesture.supportVibStrength())
+                writeVibStrength(mPrefs.getInt(PREF_KEY_VIB_STRENGTH, 20));
         }
 
         protected void setGesturePrefsEnabled(boolean enabled) {
@@ -245,6 +261,7 @@ public class WakeGestureSettings extends Activity {
             mPrefKernelS2w.setEnabled(WakeGesture.supportSweep());
             mPrefKernelWg.setEnabled(WakeGesture.supportWakeGesture());
             mPrefKernelProximity.setEnabled(WakeGesture.supportProximity());
+            mPrefKernelVibStrength.setEnabled(WakeGesture.supportVibStrength());
         }
 
         @Override

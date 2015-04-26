@@ -57,7 +57,7 @@
     <string name="action_screen_on">Turn screen on</string>
 
     <!-- Other category -->
-    <string name="pref_cat_other_title">Settings</string>
+    <string name="pref_cat_other_title">Others</string>
 
     <!-- start on boot -->
     <string name="pref_start_onboot_title">Start on boot</string>
@@ -76,11 +76,11 @@
 
     <!-- wake gesture -->
     <string name="pref_wg_title">Wake gesture</string>
-    <string name="pref_wg_summary">Support custom actions for double tap and sweep</string>
+    <string name="pref_wg_summary">Support custom actions</string>
 
     <!-- proximity -->
     <string name="pref_proximity_title">Proximity sensor</string>
-    <string name="pref_proximity_summary">Permit to control touchscreen power state</string>
+    <string name="pref_proximity_summary">Permit to control touchscreen power</string>
 
     <!-- vib_strength -->
     <string name="pref_vib_strength_title">Vibration strength</string>

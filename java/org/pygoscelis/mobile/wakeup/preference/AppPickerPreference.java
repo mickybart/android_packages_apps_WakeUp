@@ -720,7 +720,7 @@ public class AppPickerPreference extends DialogPreference
             mAppIcon = new BitmapDrawable(mResources, bitmap);
             mIntent.setAction(ACTION_SCREEN_DOZE);
             mIntent.putExtra(EXTRA_KEEP_SCREEN_OFF, true);
-            mIntent.putExtra("iconResName", "ic_action_screen_on");
+            mIntent.putExtra("iconResName", "ic_action_screen_doze");
             mIntent.putExtra("prefLabel", mAppName);
         }
     }

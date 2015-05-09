@@ -90,6 +90,7 @@ public class AppPickerPreference extends DialogPreference
     public static final String ACTION_MEDIA_CONTROL = "wakegestures.intent.action.MEDIA_CONTROL";
     public static final String EXTRA_MC_KEYCODE = "mediaControlKeycode";
     public static final String ACTION_SCREEN_ON = "wakegestures.intent.action.SCREEN_ON";
+    public static final String ACTION_SCREEN_DOZE = "wakegestures.intent.action.SCREEN_DOZE";
 
     public static final String EXTRA_KEEP_SCREEN_OFF = "keepScreenOff";
 
@@ -338,6 +339,7 @@ public class AppPickerPreference extends DialogPreference
                     itemList.add(new MediaAction(R.string.media_control_next,
                             R.drawable.ic_action_av_next, KeyEvent.KEYCODE_MEDIA_NEXT));
                     itemList.add(new ScreenOnAction());
+                    itemList.add(new ScreenDozeAction());
                 } else {
                     List<PackageInfo> packages = mPackageManager.getInstalledPackages(0);
                     Intent mainIntent = new Intent();
@@ -708,4 +710,20 @@ public class AppPickerPreference extends DialogPreference
             mIntent.putExtra("prefLabel", mAppName);
         }
     };
+
+    class ScreenDozeAction extends ActionItem {
+        public ScreenDozeAction() {
+            super();
+            mAppName = mResources.getString(R.string.broadcast_screen_doze);
+            Bitmap bitmap = Utils.drawableToBitmap(mResources.getDrawable(R.drawable.ic_action_screen_doze));
+            bitmap = Bitmap.createScaledBitmap(bitmap, mAppIconSizePx, mAppIconSizePx, false);
+            mAppIcon = new BitmapDrawable(mResources, bitmap);
+            mIntent.setAction(ACTION_SCREEN_DOZE);
+            mIntent.putExtra(EXTRA_KEEP_SCREEN_OFF, true);
+            mIntent.putExtra("iconResName", "ic_action_screen_on");
+            mIntent.putExtra("prefLabel", mAppName);
+        }
+    }
+
+
 }

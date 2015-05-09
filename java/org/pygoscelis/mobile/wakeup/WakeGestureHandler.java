@@ -112,17 +112,13 @@ public class WakeGestureHandler implements IWakeGestureListener {
 
         int mode = intent.getIntExtra("mode", AppPickerPreference.MODE_APP);
         if (mode == AppPickerPreference.MODE_APP || mode == AppPickerPreference.MODE_SHORTCUT) {
-            startActivity(intent);
+            mContext.startActivity(intent);
         } else if (mode == AppPickerPreference.MODE_ACTION) {
             executeAction(intent);
         }
 
         mWakeLock.release();
         mWakeLock = null;
-    }
-
-    private void startActivity(Intent intent) {
-        mContext.startActivity(intent);
     }
 
     private void executeAction(Intent intent) {
@@ -135,6 +131,11 @@ public class WakeGestureHandler implements IWakeGestureListener {
             }
         } else if (action.equals(AppPickerPreference.ACTION_SCREEN_ON)) {
             // do nothing as wake lock already did it for us
+        } else if (action.equals(AppPickerPreference.ACTION_SCREEN_DOZE)) {
+            Log.d(TAG, "broadcast: " + intent.getAction());
+            Intent intentDoze = new Intent();
+            intentDoze.setAction("com.android.systemui.doze.pulse");
+            mContext.sendBroadcast(intentDoze);
         }
     }
 

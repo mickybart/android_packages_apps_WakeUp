@@ -61,7 +61,7 @@
             android:key="pref_dt2w"
             android:title="@string/pref_dt2w_title"
             android:summary="@string/pref_dt2w_summary"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <SwitchPreference
             android:key="pref_s2w"
@@ -79,7 +79,7 @@
             android:key="pref_proximity"
             android:title="@string/pref_proximity_title"
             android:summary="@string/pref_proximity_summary"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <org.pygoscelis.mobile.wakeup.preference.SeekBarPreference
             android:key="pref_vib_strength"

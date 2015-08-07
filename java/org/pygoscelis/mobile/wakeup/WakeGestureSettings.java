@@ -46,7 +46,6 @@ import android.widget.TextView;
 
 public class WakeGestureSettings extends Activity {
     public static final String PREF_CAT_KEY_GESTURES = "pref_cat_gestures";
-    public static final String PREF_KEY_ABOUT = "pref_about";
     public static final String PREF_KEY_WG_SWEEP_RIGHT = "pref_wg_sweep_right";
     public static final String PREF_KEY_WG_SWEEP_LEFT = "pref_wg_sweep_left";
     public static final String PREF_KEY_WG_SWEEP_UP = "pref_wg_sweep_up";
@@ -118,7 +117,6 @@ public class WakeGestureSettings extends Activity {
             Preference.OnPreferenceChangeListener {
         private SharedPreferences mPrefs;
         private PreferenceCategory mPrefCatGestures;
-        private Preference mPrefAbout;
 
         private Preference mPrefDoubleTap;
         private Preference mPrefSweepRight;
@@ -143,17 +141,6 @@ public class WakeGestureSettings extends Activity {
             AppPickerPreference.sPrefsFragment = this;
 
             mPrefCatGestures = (PreferenceCategory) findPreference(PREF_CAT_KEY_GESTURES);
-
-            mPrefAbout = findPreference(PREF_KEY_ABOUT);
-            String version = "";
-            try {
-                PackageInfo pInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
-                version = " v" + pInfo.versionName;
-            } catch (NameNotFoundException e) {
-                e.printStackTrace();
-            } finally {
-                mPrefAbout.setTitle(getActivity().getTitle() + version);
-            }
 
             mPrefDoubleTap = findPreference(PREF_KEY_WG_DOUBLETAP);
             mPrefSweepRight = findPreference(PREF_KEY_WG_SWEEP_RIGHT);
@@ -276,26 +263,6 @@ public class WakeGestureSettings extends Activity {
         public void onPause() {
             mPrefs.unregisterOnSharedPreferenceChangeListener(this);
             super.onPause();
-        }
-
-        @Override
-        public boolean onPreferenceTreeClick(PreferenceScreen prefScreen, Preference pref) {
-            Intent intent = null;
-
-            if (pref == mPrefAbout) {
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.url_wakegestures)));
-            }
-
-            if (intent != null) {
-                try {
-                    startActivity(intent);
-                } catch (ActivityNotFoundException e) {
-                    e.printStackTrace();
-                }
-                return true;
-            }
-
-            return super.onPreferenceTreeClick(prefScreen, pref);
         }
 
         @Override

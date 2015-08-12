@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
+ * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<resources>
+
+    <string name="app_name">Wake Up</string>
+
+    <string name="wake_gestures_unsupported">Il tuo dispositivo non supporta le wake gestures a livello kernel</string>
+
+    <string name="pref_cat_gestures_title">Azioni gesture</string>
+
+    <!-- AppPickerPreference -->
+    <string name="app_picker_none">(Nessuna azione)</string>
+    <string name="app_picker_search">Cerca</string>
+    <string name="app_picker_applications">Applicazioni</string>
+    <string name="app_picker_shortcuts">Collegamenti</string>
+    <string name="app_picker_actions">Azioni</string>
+    <string name="app_picker_shortcut_null_intent">Impossibile creare uno shortcut avviabile poiché l\'activity non ha restituito un intent shortcut</string>
+    <string name="app_picker_shortcut_cancelled">Creazione collegamento annullato dall\'app</string>
+
+    <!-- Wake gestures -->
+    <string name="pref_wg_sweep_right_title">Scorri a destra</string>
+    <string name="pref_wg_sweep_left_title">Scorri a sinistra</string>
+    <string name="pref_wg_sweep_up_title">Scorri verso l\'alto</string>
+    <string name="pref_wg_sweep_down_title">Scorri verso il basso</string>
+    <string name="pref_wg_doubletap_title">Doppio tocco</string>
+
+    <!-- Actions -->
+    <string name="action_unlock">Sblocca</string>
+    <string name="action_toggle_torch">Torcia On/Off</string>
+    <string name="torch_on">Torcia accesa</string>
+    <string name="torch_off_notif">Tocca per spegnere</string>
+
+    <!-- Media control action -->
+    <string name="media_control_previous">Traccia precedente</string>
+    <string name="media_control_next">Traccia successiva</string>
+
+    <!-- Screen on action -->
+    <string name="action_screen_on">Accendi lo schermo</string>
+
+    <!-- Doze Broadcast -->
+    <string name="broadcast_screen_doze">Ambient display</string>
+
+    <!-- Other category -->
+    <string name="pref_cat_other_title">Altro</string>
+
+    <!-- start on boot -->
+    <string name="pref_start_onboot_title">Abilita all\'avvio</string>
+    <string name="pref_start_onboot_summary">Abilita le gestures all\'avvio</string>
+
+    <!-- Kernel category -->
+    <string name="pref_cat_kernel_title">Kernel</string>
+
+    <!-- double tap to wake -->
+    <string name="pref_dt2w_title">Doppio tocco</string>
+    <string name="pref_dt2w_summary">Doppio tocco per risvegliare il dispositivo</string>
+
+    <!-- sweep to wake -->
+    <string name="pref_s2w_title">Scorri</string>
+    <string name="pref_s2w_summary">Scorri per risveglire il dispositivo</string>
+
+    <!-- wake gesture -->
+    <string name="pref_wg_title">Wake gesture</string>
+    <string name="pref_wg_summary">Supporto per azioni personalizzate</string>
+
+    <!-- proximity -->
+    <string name="pref_proximity_title">Sensore di prossimità</string>
+    <string name="pref_proximity_summary">Permetti di controllare l\'accensione del touchscreen</string>
+
+    <!-- vib_strength -->
+    <string name="pref_vib_strength_title">Intensità vibrazione</string>
+
+</resources>

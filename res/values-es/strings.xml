@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
+ * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<resources>
+
+    <string name="app_name">Wake Up</string>
+
+    <string name="wake_gestures_unsupported">Tu dispositivo no tiene soporte de kernel para despertar con gestos</string>
+
+    <string name="pref_cat_gestures_title">Acciones para despertar por gestos</string>
+
+    <!-- AppPickerPreference -->
+    <string name="app_picker_none">(Ninguno)</string>
+    <string name="app_picker_search">Buscar</string>
+    <string name="app_picker_applications">Aplicaciones</string>
+    <string name="app_picker_shortcuts">Acceso directo</string>
+    <string name="app_picker_actions">Aciones</string>
+    <string name="app_picker_shortcut_null_intent">Incapaz de crear acceso directo porque la actividad no responde a la petición</string>
+    <string name="app_picker_shortcut_cancelled">Acceso directo cancelado por la aplicación destino</string>
+
+    <!-- Wake gestures -->
+    <string name="pref_wg_sweep_right_title">Deslizar a la derecha</string>
+    <string name="pref_wg_sweep_left_title">Deslizar a la izquierda</string>
+    <string name="pref_wg_sweep_up_title">Deslizar hacia arriba</string>
+    <string name="pref_wg_sweep_down_title">Deslizar hacia abajo</string>
+    <string name="pref_wg_doubletap_title">Doble toque</string>
+
+    <!-- Actions -->
+    <string name="action_unlock">Desbloquear</string>
+    <string name="action_toggle_torch">Cambiar linterna</string>
+    <string name="torch_on">Encender linterna</string>
+    <string name="torch_off_notif">Apagar linterna</string>
+
+    <!-- Media control action -->
+    <string name="media_control_previous">Pista anterior</string>
+    <string name="media_control_next">Pista siguiente</string>
+
+    <!-- Screen on action -->
+    <string name="action_screen_on">Encender la pantalla</string>
+
+    <!-- Doze Broadcast -->
+    <string name="broadcast_screen_doze">Pantalla ambiente</string>
+
+    <!-- Other category -->
+    <string name="pref_cat_other_title">Otros</string>
+
+    <!-- start on boot -->
+    <string name="pref_start_onboot_title">Iniciar en el arranque</string>
+    <string name="pref_start_onboot_summary">Iniciar aplicación Wake gestures en el arranque</string>
+
+    <!-- Kernel category -->
+    <string name="pref_cat_kernel_title">Nucleo (Kernel)</string>
+
+    <!-- double tap to wake -->
+    <string name="pref_dt2w_title">Doble toque</string>
+    <string name="pref_dt2w_summary">Usar doble toque para despertar</string>
+
+    <!-- sweep to wake -->
+    <string name="pref_s2w_title">Deslizar</string>
+    <string name="pref_s2w_summary">Usar deslizar para bloquear</string>
+
+    <!-- wake gesture -->
+    <string name="pref_wg_title">Gestos para despertar</string>
+    <string name="pref_wg_summary">Habilitar accioines personalizadas</string>
+
+    <!-- proximity -->
+    <string name="pref_proximity_title">Sensor de proximidad</string>
+    <string name="pref_proximity_summary">Permitir control de energía de la pantalla tactil</string>
+
+    <!-- vib_strength -->
+    <string name="pref_vib_strength_title">Intensidad de vibración</string>
+
+</resources>

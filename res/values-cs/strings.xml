@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
+ * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<resources>
+
+    <string name="app_name">Probuzení</string>
+
+    <string name="wake_gestures_unsupported">Vaše zařízení nepodporuje gesta probuzení na úrovni jádra</string>
+
+    <string name="pref_cat_gestures_title">Akce gesta probuzení</string>
+
+    <!-- AppPickerPreference -->
+    <string name="app_picker_none">(Žádná)</string>
+    <string name="app_picker_search">Vyhledávání</string>
+    <string name="app_picker_applications">Aplikace</string>
+    <string name="app_picker_shortcuts">Zkratky</string>
+    <string name="app_picker_actions">Akce</string>
+    <string name="app_picker_shortcut_null_intent">Není možné vytvořit spustitelnou zkratku, protože aktivita neposkytla cíl zkratky</string>
+    <string name="app_picker_shortcut_cancelled">Vytvoření zkratky zrušeno cílovou aplikací</string>
+
+    <!-- Wake gestures -->
+    <string name="pref_wg_sweep_right_title">Posunutí vpravo</string>
+    <string name="pref_wg_sweep_left_title">Posunutí vlevo</string>
+    <string name="pref_wg_sweep_up_title">Posunutí nahoru</string>
+    <string name="pref_wg_sweep_down_title">Posunutí dolů</string>
+    <string name="pref_wg_doubletap_title">Dvojitý poklep</string>
+
+    <!-- Actions -->
+    <string name="action_unlock">Odemknout</string>
+    <string name="action_toggle_torch">Přepnout svítilnu</string>
+    <string name="torch_on">Svítilna zapnuta</string>
+    <string name="torch_off_notif">Poklepněte pro zhasnutí svítilny</string>
+
+    <!-- Media control action -->
+    <string name="media_control_previous">Předchozí skladba</string>
+    <string name="media_control_next">Další skladba</string>
+
+    <!-- Screen on action -->
+    <string name="action_screen_on">Zapnout displej</string>
+
+    <!-- Doze Broadcast -->
+    <string name="broadcast_screen_doze">Ambientní displej</string>
+
+    <!-- Other category -->
+    <string name="pref_cat_other_title">Ostatní</string>
+
+    <!-- start on boot -->
+    <string name="pref_start_onboot_title">Spustit při startu</string>
+    <string name="pref_start_onboot_summary">Aktivovat gesta probuzení během startu</string>
+
+    <!-- Kernel category -->
+    <string name="pref_cat_kernel_title">Jádro</string>
+
+    <!-- double tap to wake -->
+    <string name="pref_dt2w_title">Dvojité klepnutí</string>
+    <string name="pref_dt2w_summary">Probuďte dvojitým klepnutím</string>
+
+    <!-- sweep to wake -->
+    <string name="pref_s2w_title">Posunutí</string>
+    <string name="pref_s2w_summary">Probuďte posunutím</string>
+
+    <!-- wake gesture -->
+    <string name="pref_wg_title">Gesto probuzení</string>
+    <string name="pref_wg_summary">Podpora uživatelských akcí</string>
+
+    <!-- proximity -->
+    <string name="pref_proximity_title">Senzor přiblížení</string>
+    <string name="pref_proximity_summary">Povolení k řízení napájení dotykového displeje</string>
+
+    <!-- vib_strength -->
+    <string name="pref_vib_strength_title">Síla vibrace</string>
+
+</resources>

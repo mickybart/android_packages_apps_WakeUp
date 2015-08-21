@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
+ * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<resources>
+
+    <string name="app_name">Wake Up</string>
+
+    <string name="wake_gestures_unsupported">Ваш пристрій не підтримує жести розблокування на рівні ядра</string>
+
+    <string name="pref_cat_gestures_title">Дії жестів розблокування</string>
+
+    <!-- AppPickerPreference -->
+    <string name="app_picker_none">(Жодної дії)</string>
+    <string name="app_picker_search">Пошук</string>
+    <string name="app_picker_applications">Додатки</string>
+    <string name="app_picker_shortcuts">Посилання</string>
+    <string name="app_picker_actions">Дії</string>
+    <string name="app_picker_shortcut_null_intent">Неможливо створити активне посилання, бо цей додаток не підтримує функцію створення посилань</string>
+    <string name="app_picker_shortcut_cancelled">Створення посилання було перервано цільовим додатком</string>
+
+    <!-- Wake gestures -->
+    <string name="pref_wg_sweep_right_title">Свайп вправо</string>
+    <string name="pref_wg_sweep_left_title">Свайп вліво</string>
+    <string name="pref_wg_sweep_up_title">Свайп вгору</string>
+    <string name="pref_wg_sweep_down_title">Свайп вниз</string>
+    <string name="pref_wg_doubletap_title">Подвійний дотик</string>
+
+    <!-- Actions -->
+    <string name="action_unlock">Розблокувати</string>
+    <string name="action_toggle_torch">Ліхтарик</string>
+    <string name="torch_on">Увімкнути ліхтарик</string>
+    <string name="torch_off_notif">Натисніть, щоб вимкнути</string>
+
+    <!-- Media control action -->
+    <string name="media_control_previous">Попередній трек</string>
+    <string name="media_control_next">Наступний трек</string>
+
+    <!-- Screen on action -->
+    <string name="action_screen_on">Увімкнути екран</string>
+
+    <!-- Doze Broadcast -->
+    <string name="broadcast_screen_doze">Регульована яскравість</string>
+
+    <!-- Other category -->
+    <string name="pref_cat_other_title">Інше</string>
+
+    <!-- start on boot -->
+    <string name="pref_start_onboot_title">Запускати при старті системи</string>
+    <string name="pref_start_onboot_summary">Вмикати керування свайпами при старті системи</string>
+
+    <!-- Kernel category -->
+    <string name="pref_cat_kernel_title">Ядро</string>
+
+    <!-- double tap to wake -->
+    <string name="pref_dt2w_title">Подвійний дотик</string>
+    <string name="pref_dt2w_summary">Використовувати подвійний дотик для розблокування</string>
+
+    <!-- sweep to wake -->
+    <string name="pref_s2w_title">Свайп</string>
+    <string name="pref_s2w_summary">Використовувати свайп для розблокування</string>
+
+    <!-- wake gesture -->
+    <string name="pref_wg_title">Жест розблокування</string>
+    <string name="pref_wg_summary">Ввімкнути підтримку додаткових дій</string>
+
+    <!-- proximity -->
+    <string name="pref_proximity_title">Сенсор наближення</string>
+    <string name="pref_proximity_summary">Дозволити керувати чутливістю тачскріну</string>
+
+    <!-- vib_strength -->
+    <string name="pref_vib_strength_title">Сила вібрації</string>
+
+</resources>

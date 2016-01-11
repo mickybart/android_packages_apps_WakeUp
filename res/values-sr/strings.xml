@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
+ * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<resources>
+
+    <string name="app_name">Буђење екрана</string>
+
+    <string name="wake_gestures_unsupported">Ваш уређај не подржава буђење покретима на нивоу кернела</string>
+
+    <string name="pref_cat_gestures_title">Акције буђења покретима</string>
+
+    <!-- AppPickerPreference -->
+    <string name="app_picker_none">(Ништа)</string>
+    <string name="app_picker_search">Претрага</string>
+    <string name="app_picker_applications">Апликације</string>
+    <string name="app_picker_shortcuts">Пречице</string>
+    <string name="app_picker_actions">Акције</string>
+    <string name="app_picker_shortcut_null_intent">Није могуће направити пречицу за стартовање зато што activity не враћа shortcut intent</string>
+    <string name="app_picker_shortcut_cancelled">Креирање пречице отказано од изабране апликације</string>
+
+    <!-- Wake gestures -->
+    <string name="pref_wg_sweep_right_title">Превлачење десно</string>
+    <string name="pref_wg_sweep_left_title">Превлачење лево</string>
+    <string name="pref_wg_sweep_up_title">Превлачење горе</string>
+    <string name="pref_wg_sweep_down_title">Превлачење доле</string>
+    <string name="pref_wg_doubletap_title">Дупли додир</string>
+
+    <!-- Actions -->
+    <string name="action_unlock">Откључавање</string>
+    <string name="action_toggle_torch">Прекидач лампе</string>
+    <string name="torch_on">Лампа укључена</string>
+    <string name="torch_off_notif">Додирните да искључите</string>
+
+    <!-- Media control action -->
+    <string name="media_control_previous">Претходна нумера</string>
+    <string name="media_control_next">Следећа нумера</string>
+
+    <!-- Screen on action -->
+    <string name="action_screen_on">Укључивање екрана</string>
+
+    <!-- Doze Broadcast -->
+    <string name="broadcast_screen_doze">Амбијентални екран</string>
+
+    <!-- Other category -->
+    <string name="pref_cat_other_title">Остало</string>
+
+    <!-- start on boot -->
+    <string name="pref_start_onboot_title">Покретање при укључивању</string>
+    <string name="pref_start_onboot_summary">Покретање буђења покретима при укључивању</string>
+
+    <!-- Kernel category -->
+    <string name="pref_cat_kernel_title">Кернел</string>
+
+    <!-- double tap to wake -->
+    <string name="pref_dt2w_title">Дупли додир</string>
+    <string name="pref_dt2w_summary">Употреби дупли додир за буђење</string>
+
+    <!-- sweep to wake -->
+    <string name="pref_s2w_title">Превлачење</string>
+    <string name="pref_s2w_summary">Употреби превлачење за буђење</string>
+
+    <!-- wake gesture -->
+    <string name="pref_wg_title">Буђење покретима</string>
+    <string name="pref_wg_summary">Подржи произвољне акције</string>
+
+    <!-- proximity -->
+    <string name="pref_proximity_title">Сензор близине</string>
+    <string name="pref_proximity_summary">Дозволи контролу осетљивости екрана</string>
+
+    <!-- vib_strength -->
+    <string name="pref_vib_strength_title">Снага вибрације</string>
+
+</resources>

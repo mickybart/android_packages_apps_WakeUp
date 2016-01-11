@@ -454,9 +454,24 @@ public class AppPickerPreference extends DialogPreference
                     }
                 }
             } else if (mode == MODE_ACTION) {
-                appInfo.name = intent.getStringExtra("prefLabel");
+                //we have to get action name from string resource instead of saved value because language may change
+                int nameResId = -1;
                 if (iconResId != 0) {
                     appInfo.icon = mResources.getDrawable(iconResId);
+
+                    switch (iconResId) {
+                        case R.drawable.ic_action_unlock:       nameResId = R.string.action_unlock; break;
+                        case R.drawable.ic_action_torch:        nameResId = R.string.action_toggle_torch; break;
+                        case R.drawable.ic_action_av_previous:  nameResId = R.string.media_control_previous; break;
+                        case R.drawable.ic_action_av_next:      nameResId = R.string.media_control_next; break;
+                        case R.drawable.ic_action_screen_on:    nameResId = R.string.action_screen_on; break;
+                        case R.drawable.ic_action_screen_doze:  nameResId = R.string.broadcast_screen_doze; break;
+                    }
+                }
+                if (nameResId != -1) {
+                    appInfo.name = mResources.getString(nameResId);
+                } else {
+                    appInfo.name = intent.getStringExtra("prefLabel");
                 }
             }
             return appInfo;

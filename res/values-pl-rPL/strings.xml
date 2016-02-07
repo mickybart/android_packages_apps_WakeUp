@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
+ * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<resources>
+
+    <string name="app_name">Opcje Wybudzania</string>
+
+    <string name="wake_gestures_unsupported">Twój telefon nie obsługuje gestów wybudzania na poziomie jądra</string>
+
+    <string name="pref_cat_gestures_title">Akcje gestów wybudzania</string>
+
+    <!-- AppPickerPreference -->
+    <string name="app_picker_none">(Brak)</string>
+    <string name="app_picker_search">Szukaj</string>
+    <string name="app_picker_applications">Aplikacje</string>
+    <string name="app_picker_shortcuts">Skróty</string>
+    <string name="app_picker_actions">Akcje</string>
+    <string name="app_picker_shortcut_null_intent">Nie udało się stworzyć skrótu, zadania nie można wykonać poprzez skrót</string>
+    <string name="app_picker_shortcut_cancelled">Tworzenie skrótu przerwane przez aplikację</string>
+
+    <!-- Wake gestures -->
+    <string name="pref_wg_sweep_right_title">Przeciągnięcie w prawo</string>
+    <string name="pref_wg_sweep_left_title">Przeciągnięcie w lewo</string>
+    <string name="pref_wg_sweep_up_title">Przeciągnięcie w górę</string>
+    <string name="pref_wg_sweep_down_title">Przeciągnięcie w dół</string>
+    <string name="pref_wg_doubletap_title">Podwójne stuknięcie</string>
+
+    <!-- Actions -->
+    <string name="action_unlock">Odblokuj ekran</string>
+    <string name="action_toggle_torch">Latarka</string>
+    <string name="torch_on">Latarka włączona</string>
+    <string name="torch_off_notif">Dotknij, aby wyłączyć</string>
+
+    <!-- Media control action -->
+    <string name="media_control_previous">Poprzedni utwór</string>
+    <string name="media_control_next">Kolejny utwór</string>
+
+    <!-- Screen on action -->
+    <string name="action_screen_on">Wybudź ekran</string>
+
+    <!-- Doze Broadcast -->
+    <string name="broadcast_screen_doze">Funkcja Ambient Display</string>
+
+    <!-- Other category -->
+    <string name="pref_cat_other_title">Inne</string>
+
+    <!-- start on boot -->
+    <string name="pref_start_onboot_title">Zastosuj przy starcie</string>
+    <string name="pref_start_onboot_summary">Włącz gesty wybudzania przy starcie systemu</string>
+
+    <!-- Kernel category -->
+    <string name="pref_cat_kernel_title">Funkcje Kernela</string>
+
+    <!-- double tap to wake -->
+    <string name="pref_dt2w_title">Podwójne stuknięcie</string>
+    <string name="pref_dt2w_summary">Użyj podwójnego stuknięcia aby wybudzić ekran</string>
+
+    <!-- sweep to wake -->
+    <string name="pref_s2w_title">Przeciągnięcie</string>
+    <string name="pref_s2w_summary">Użyj gestu przeciągnięcia aby wybudzić ekran</string>
+
+    <!-- wake gesture -->
+    <string name="pref_wg_title">Gesty wybudzania</string>
+    <string name="pref_wg_summary">Włącz obsługę własnych akcji</string>
+
+    <!-- proximity -->
+    <string name="pref_proximity_title">Czujnik zbliżeniowy</string>
+    <string name="pref_proximity_summary">Pozwól czujnikowi na kontrolę ekranu</string>
+
+    <!-- vib_strength -->
+    <string name="pref_vib_strength_title">Siła wibracji</string>
+
+</resources>
+

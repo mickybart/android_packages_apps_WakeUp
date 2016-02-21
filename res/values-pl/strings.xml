@@ -17,11 +17,11 @@
 
 <resources>
 
-    <string name="app_name">Opcje Wybudzania</string>
+    <string name="app_name">Opcje wybudzania</string>
 
     <string name="wake_gestures_unsupported">Twój telefon nie obsługuje gestów wybudzania na poziomie jądra</string>
 
-    <string name="pref_cat_gestures_title">Akcje gestów wybudzania</string>
+    <string name="pref_cat_gestures_title">Gesty wybudzania</string>
 
     <!-- AppPickerPreference -->
     <string name="app_picker_none">(Brak)</string>
@@ -53,7 +53,7 @@
     <string name="action_screen_on">Wybudź ekran</string>
 
     <!-- Doze Broadcast -->
-    <string name="broadcast_screen_doze">Funkcja Ambient Display</string>
+    <string name="broadcast_screen_doze">Ambient Display</string>
 
     <!-- Other category -->
     <string name="pref_cat_other_title">Inne</string>
@@ -66,12 +66,12 @@
     <string name="pref_cat_kernel_title">Funkcje Kernela</string>
 
     <!-- double tap to wake -->
-    <string name="pref_dt2w_title">Podwójne stuknięcie</string>
-    <string name="pref_dt2w_summary">Użyj podwójnego stuknięcia aby wybudzić ekran</string>
+    <string name="pref_dt2w_title">Podwójne tapnięcie</string>
+    <string name="pref_dt2w_summary">Stuknij w ekran dwa razy aby go wybudzić</string>
 
     <!-- sweep to wake -->
     <string name="pref_s2w_title">Przeciągnięcie</string>
-    <string name="pref_s2w_summary">Użyj gestu przeciągnięcia aby wybudzić ekran</string>
+    <string name="pref_s2w_summary">Przesuń palec po ekranie aby go wybudzić</string>
 
     <!-- wake gesture -->
     <string name="pref_wg_title">Gesty wybudzania</string>
@@ -85,4 +85,3 @@
     <string name="pref_vib_strength_title">Siła wibracji</string>
 
 </resources>
-

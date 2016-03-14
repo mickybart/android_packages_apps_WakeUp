@@ -33,10 +33,10 @@
     <string name="app_picker_shortcut_cancelled">Criação de atalho cancelada pelo aplicativo alvo</string>
 
     <!-- Wake gestures -->
-    <string name="pref_wg_sweep_right_title">Deslize para a direita</string>
-    <string name="pref_wg_sweep_left_title">Deslize para a esquerda</string>
-    <string name="pref_wg_sweep_up_title">Deslize para cima</string>
-    <string name="pref_wg_sweep_down_title">Deslize para baixo</string>
+    <string name="pref_wg_sweep_right_title">Deslizar para a direita</string>
+    <string name="pref_wg_sweep_left_title">Deslizar para a esquerda</string>
+    <string name="pref_wg_sweep_up_title">Deslizar para cima</string>
+    <string name="pref_wg_sweep_down_title">Deslizar para baixo</string>
     <string name="pref_wg_doubletap_title">Toque duplo</string>
 
     <!-- Actions -->
@@ -59,8 +59,8 @@
     <string name="pref_cat_other_title">Outros</string>
 
     <!-- start on boot -->
-    <string name="pref_start_onboot_title">Iniciar na inicialização</string>
-    <string name="pref_start_onboot_summary">Iniciar gestos de despertar na inicialização</string>
+    <string name="pref_start_onboot_title">Fixar na inicialização</string>
+    <string name="pref_start_onboot_summary">Manter gestos de despertar na inicialização</string>
 
     <!-- Kernel category -->
     <string name="pref_cat_kernel_title">Kernel</string>

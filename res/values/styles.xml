@@ -18,9 +18,6 @@
 <resources>
 
     <style name="AppBaseTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
-        <item name="android:colorPrimary">@color/wg_theme_color</item>
-        <item name="android:colorPrimaryDark">@color/wg_theme_color_dark</item>
-        <item name="android:colorAccent">@color/wg_theme_color_accent</item>
     </style>
 
     <!-- Application theme. -->

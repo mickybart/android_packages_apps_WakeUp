@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2015 Michael Serpieri (mickybart@xda)
+ * Copyright (C) 2014 Peter Gregus (C3C076@xda)
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<resources>
+
+    <string name="app_name">唤醒</string>
+
+    <string name="wake_gestures_unsupported">您的设备不支持内核层面的唤醒手势</string>
+
+    <string name="pref_cat_gestures_title">唤醒手势操作</string>
+
+    <!-- AppPickerPreference -->
+    <string name="app_picker_none">无操作</string>
+    <string name="app_picker_search">搜索</string>
+    <string name="app_picker_applications">应用</string>
+    <string name="app_picker_shortcuts">快捷方式</string>
+    <string name="app_picker_actions">操作</string>
+    <string name="app_picker_shortcut_null_intent">活动未返回快捷方式 intent，因此无法创建可启动的快捷方式</string>
+    <string name="app_picker_shortcut_cancelled">快捷方式的创建被目标应用取消</string>
+
+    <!-- Wake gestures -->
+    <string name="pref_wg_sweep_right_title">向右轻扫</string>
+    <string name="pref_wg_sweep_left_title">向左轻扫</string>
+    <string name="pref_wg_sweep_up_title">向上轻扫</string>
+    <string name="pref_wg_sweep_down_title">向下轻扫</string>
+    <string name="pref_wg_doubletap_title">双击</string>
+
+    <!-- Actions -->
+    <string name="action_unlock">解锁</string>
+    <string name="action_toggle_torch">开关手电筒</string>
+    <string name="torch_on">开启手电筒</string>
+    <string name="torch_off_notif">关闭手电筒</string>
+
+    <!-- Media control action -->
+    <string name="media_control_previous">上一曲</string>
+    <string name="media_control_next">下一曲</string>
+
+    <!-- Screen on action -->
+    <string name="action_screen_on">点亮屏幕</string>
+
+    <!-- Doze Broadcast -->
+    <string name="broadcast_screen_doze">自动调节亮度</string>
+
+    <!-- Other category -->
+    <string name="pref_cat_other_title">其他</string>
+
+    <!-- start on boot -->
+    <string name="pref_start_onboot_title">开机时启动</string>
+    <string name="pref_start_onboot_summary">在开机时启用唤醒手势</string>
+
+    <!-- Kernel category -->
+    <string name="pref_cat_kernel_title">内核</string>
+
+    <!-- double tap to wake -->
+    <string name="pref_dt2w_title">双击</string>
+    <string name="pref_dt2w_summary">双击以唤醒</string>
+
+    <!-- sweep to wake -->
+    <string name="pref_s2w_title">轻扫</string>
+    <string name="pref_s2w_summary">轻扫以唤醒</string>
+
+    <!-- wake gesture -->
+    <string name="pref_wg_title">唤醒手势</string>
+    <string name="pref_wg_summary">支持手势的自定义操作</string>
+
+    <!-- proximity -->
+    <string name="pref_proximity_title">距离传感器</string>
+    <string name="pref_proximity_summary">允许根据距离传感器的状态控制屏幕电源</string>
+
+    <!-- vib_strength -->
+    <string name="pref_vib_strength_title">振动强度</string>
+
+</resources>
